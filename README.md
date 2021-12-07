@@ -1,11 +1,9 @@
-# Cyber_Sec_Analysis
-Cyber-Security Intrusion Analysis
+# Cyber-Security Intrusion Analysis
 
 # Coding Dojo - Casptone Project
-# Developed by:
-#     - Francisco Piedra
-#     - Sharon Alvarado
-
+ Developed by:
+     - Francisco Piedra
+     - Sharon Alvarado
 
 # Dataset Context:
 The dataset consists of a wide variety of intrusions simulated in a military network environment.
@@ -20,7 +18,7 @@ The class variable has two categories:
   • **Normal**
   • **Anomaly**
 
-# Below there is a glossary related to the columns from the dataset:
+# Glossary
 
 1.	**Duration**: Time duration of the connection (quant.) 
 2.	**Protocol** type: Protocol used in connection (cat., 3 categories) 
@@ -64,3 +62,6 @@ The class variable has two categories:
 40.	**dst host rerror rate**: % of connections that have activated the REJ flag (4), among those in dst host count (quant.) 
 41.	**dst host srv rerror rate**: % of connections that have activated the REJ flag (4), among those in dst host srv count (quant.)
 42.	**class**: If the connection is Normal, or Anormaly.
+
+# Credits:
+Dataset was extract from the following site: http://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html
