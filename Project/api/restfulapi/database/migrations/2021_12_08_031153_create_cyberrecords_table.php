@@ -56,7 +56,7 @@ class CreateCyberrecordsTable extends Migration
             $table->float('dst_host_srv_serror_rate');
             $table->float('dst_host_rerror_rate');
             $table->float('dst_host_srv_rerror_rate');
-            $table->float('class');
+            $table->string('class');
             $table->timestamps();
         });
     }

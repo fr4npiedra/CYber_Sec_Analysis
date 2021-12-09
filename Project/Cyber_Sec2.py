@@ -61,12 +61,8 @@ warnings.filterwarnings("ignore")
 #   Load Data Set
 # ***************************************************************************************
 #
-URL_1 = 'http://127.0.0.1:8000/api/cyberrecords'
-dataset = pd.read_json(URL_1)
-
-URL_2 = 'http://127.0.0.1:8000/api/cyberrecords'
-dataset_temp = pd.read_json(URL_2)
-
+dataset = pd.read_csv('Train_data.csv')
+dataset_temp = pd.read_csv('Train_data.csv')
 
 # ***************************************************************************************
 #      See Data Frame Information
@@ -108,15 +104,20 @@ y = dataset_temp
 #X.drop_duplicates(inplace = True)
 #X.dropna(inplace = True)
 
-X = dataset.drop(['id','land','wrong_fragment','urgent','hot','num_failed_logins','logged_in','num_compromised','root_shell','su_attempted','num_root','num_file_creations','num_shells','num_access_files','num_outbound_cmds','is_host_login','is_guest_login','serror_rate','srv_serror_rate','rerror_rate','srv_rerror_rate','dst_host_rerror_rate','dst_host_srv_rerror_rate','class','created_at','updated_at'], axis=1)
+X = dataset.drop(['land','wrong_fragment','urgent','hot','num_failed_logins','logged_in','num_compromised','root_shell','su_attempted','num_root','num_file_creations','num_shells','num_access_files','num_outbound_cmds','is_host_login','is_guest_login','serror_rate','srv_serror_rate','rerror_rate','srv_rerror_rate','dst_host_rerror_rate','dst_host_srv_rerror_rate','class'], axis=1)
+#X = dataset.drop(['id','land','wrong_fragment','urgent','hot','num_failed_logins','logged_in','num_compromised','root_shell','su_attempted','num_root','num_file_creations','num_shells','num_access_files','num_outbound_cmds','is_host_login','is_guest_login','serror_rate','srv_serror_rate','rerror_rate','srv_rerror_rate','dst_host_rerror_rate','dst_host_srv_rerror_rate','class','created_at','updated_at'], axis=1)
 y = dataset['class']
+
+print('++++++++++++++++')
+print(y)
+print('++++++++++++++++')
 
 dataset_temp = dataset_temp.drop(['class'], axis=1)
 
 X = X.drop(['protocol_type','service','flag'], axis=1)
 
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 33)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.50, random_state = 33)
 
 features_mean=list(X_test.columns[4:18])
 
@@ -179,6 +180,7 @@ print(X_train_numeric.head())
 X_test_numeric = X_test_numeric[(np.abs(stats.zscore(X_test_numeric)) < 2.5).all(axis = 1)]
 print(X_test_numeric.head())
 
+
 #******************************************
 # Categorical Data
 #
@@ -193,6 +195,7 @@ print(X_test_cat.head())
 #******************************************
 # Encoding Categorical Data
 #
+
 from sklearn import preprocessing
 import category_encoders as ce
 
@@ -247,6 +250,9 @@ lr_model.fit(X_train_prep, y_train)
 y_hat_train = lr_model.predict(X_train_prep)
 residuals = (y_train - y_hat_train)
 
+print('residuals')
+print(residuals)
+
 #Seventh Step: Model Evaluation
 #There are three primary metrics used to evaluate linear models. 
 #These are: Mean absolute error (MAE), Mean squared error (MSE), or Root mean squared error (RMSE).
@@ -281,8 +287,8 @@ plt.scatter(y_hat_train, residuals)
 plt.show()
 
 # # Use our model to make a prediction for Traffic Class
-print('+*+*+*+*+*+*')
-print(X_test.info())
+
+print(y_test)
 #X_train, X_test, y_train, y_test 
 
 y_pred = lr_model.predict(X_test_prep)
@@ -293,58 +299,14 @@ print('predicted response:', np.trunc(abs(y_pred)), sep='\n')
 #   val = np.trunc(abs(np.around(x[0])))
 #   print(val)
 
-results_dataset = pd.DataFrame(columns = ['DURATION', 'SRC_BYTES', 'DST_BYTES','COUNT','SRV_COUNT','SAME_SRV_RATE','DIFF_SRV_RATE','SRV_DIFF_HOST_RATE','DST_HOST_COUNT','DST_HOST_SRV_COUNT','DST_HOST_SAME_SRV_RATE','DST_HOST_DIFF_SRV_RATE','DST_HOST_SAME_SRV_PORT_RATE','DST_HOST_SRV_DIFF_HOST_RATE','DST_HOST_SERROR_RATE','DST_HOST_SRV_SERROR_RATE','CLASS'])
-
-i = 0
-for x in y_pred:
-  val = np.trunc(abs(np.around(x[0])))
-  if (val == 1.0):
-    print('Potential Thread',X_test['duration'].values[i])
-    results_dataset = results_dataset.append({'DURATION' : X_test['duration'].values[i],
-      'SRC_BYTES' : X_test['src_bytes'].values[i],
-      'DST_BYTES' : X_test['dst_bytes'].values[i],
-      'COUNT' : X_test['count'].values[i],
-      'SRV_COUNT' : X_test['srv_count'].values[i],
-      'SAME_SRV_RATE' : X_test['same_srv_rate'].values[i],
-      'DIFF_SRV_RATE' : X_test['diff_srv_rate'].values[i],
-      'SRV_DIFF_HOST_RATE' : X_test['srv_diff_host_rate'].values[i],
-      'DST_HOST_COUNT' : X_test['dst_host_count'].values[i],
-      'DST_HOST_SRV_COUNT' : X_test['dst_host_srv_count'].values[i],
-      'DST_HOST_SAME_SRV_RATE' : X_test['dst_host_same_srv_rate'].values[i],
-      'DST_HOST_DIFF_SRV_RATE' : X_test['dst_host_diff_srv_rate'].values[i],
-      'DST_HOST_SAME_SRV_PORT_RATE' : X_test['dst_host_same_src_port_rate'].values[i],
-      'DST_HOST_SRV_DIFF_HOST_RATE' : X_test['dst_host_srv_diff_host_rate'].values[i],
-      'DST_HOST_SERROR_RATE' : X_test['dst_host_serror_rate'].values[i],
-      'DST_HOST_SRV_SERROR_RATE' : X_test['dst_host_srv_serror_rate'].values[i],
-      'CLASS' : 'Potential Thread'},ignore_index = True)
-  else:
-    print('Normal Package',i)
-    results_dataset = results_dataset.append({'DURATION' : X_test['duration'].values[i],
-      'SRC_BYTES' : X_test['src_bytes'].values[i],
-      'DST_BYTES' : X_test['dst_bytes'].values[i],
-      'COUNT' : X_test['count'].values[i],
-      'SRV_COUNT' : X_test['srv_count'].values[i],
-      'SAME_SRV_RATE' : X_test['same_srv_rate'].values[i],
-      'DIFF_SRV_RATE' : X_test['diff_srv_rate'].values[i],
-      'SRV_DIFF_HOST_RATE' : X_test['srv_diff_host_rate'].values[i],
-      'DST_HOST_COUNT' : X_test['dst_host_count'].values[i],
-      'DST_HOST_SRV_COUNT' : X_test['dst_host_srv_count'].values[i],
-      'DST_HOST_SAME_SRV_RATE' : X_test['dst_host_same_srv_rate'].values[i],
-      'DST_HOST_DIFF_SRV_RATE' : X_test['dst_host_diff_srv_rate'].values[i],
-      'DST_HOST_SAME_SRV_PORT_RATE' : X_test['dst_host_same_src_port_rate'].values[i],
-      'DST_HOST_SRV_DIFF_HOST_RATE' : X_test['dst_host_srv_diff_host_rate'].values[i],
-      'DST_HOST_SERROR_RATE' : X_test['dst_host_serror_rate'].values[i],
-      'DST_HOST_SRV_SERROR_RATE' : X_test['dst_host_srv_serror_rate'].values[i],
-      'CLASS' : 'Normal Package'},ignore_index = True)
-  i=i+1
-
-print(results_dataset)
+# for x in y_pred:
+#   val = np.trunc(abs(np.around(x[0])))
+#   if (val == 1.0):
+#     print('Anomaly')
+#   else:
+#     print('Normal')
 
 # le = preprocessing.LabelEncoder()
 # le.fit(y)
 #LabelEncoder()
 #print(le.classes_)
-
-print(y_pred.shape)
-
-results_dataset.to_csv('Final_Results.csv')
