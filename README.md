@@ -44,7 +44,7 @@ The class variable has two categories:
 22.	**is guest login**: 1 if the login is from guest, 0 otherwise (binary)
 23.	**count**: number of connections to the same destination host as the current connection in the past 2 seconds (quant.) 
 24.	**srv count**: number of connections to the same service (port number) as the current connection in the past 2 seconds (quant.) 
-25.	**serror rate**: % of connections that have activated s0, s1, s2 or s3 flag (4) among connections aggregated in count (quant.) 52 3. Data NSL-KDD’99 
+25.	**serror rate**: % of connections that have activated s0, s1, s2 or s3 flag (4) among connections aggregated in count (quant.) 52 3. Data NSL-KDD-99 
 26.	**srv serror rate**: % of connections that have activated s0, s1, s2 or s3 flag (4) among connections aggregated in srv count (quant.) 
 27.	**rerror rate**: % of connections that have activated REJ flag (4) among connections aggregated in count (quant.) 
 28.	**srv rerror rate**: % of connections that have activated REJ flag (4) among connections aggregated in srv count (quant.) 

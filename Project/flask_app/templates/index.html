@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Cyber Security Intrusion Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>Cyber Security Intrusion Analysis</h1>
+						<h2>Capstone Project<h2>
+						<h3>Coding Dojo</h3>
+						<p><h2>Developed by:</h2>
+							<ul>
+								Sharon Alvarado B.<br>
+								Francisco A. Piedra S.
+							</ul>
+						</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"></a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Cyber-Sec Intrusion Analysis</a>
+					</header>
+
+			
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<span class="date">December, 10th 2021</span>
+									<h2><a href="#">Business Problem<br /></h2>
+									<p>The amount of traffic moving over the network increases everyday, making most companies and institutions vulnerable to malicious packages  coming  their way. The purpose of our project was to create a predictive model that could identify these packages and classify them as either normal or suspicious.</p><br />
+
+									<h2><a href="#">Data<br /></h2>
+									<p>The dataset used is from the Intrusion Detection Evaluation Program which was prepared and managed by MIT Lincoln Labs. Lincoln Labs set up an environment to acquire nine weeks of raw TCP dump data for a local-area network (LAN) simulating a typical U.S. Air Force LAN.<br />	 
+									We used 15 features:<br />	 
+									srv_count; same_srv_rate; diff_srv_rate; srv_diff_host_rate; dst_host_count; dst_host_srv_count; dst_host_same_srv_rate; dst_host_diff_srv_rate; dst_host_same_src_port_rate; dst_host_srv_diff_host_rate; dst_host_serror_rate; dst_host_srv_serror_rate; protocol_type; service; flag.<br />	 
+									
+									And 1 independent variable:<b> “class”</b>.</p>
+								</header>
+								
+								<a href="#" class="image main"></a>
+								
+								<ul class="actions special">
+									<!--
+									<li><a href="#" class="button large">Full Story</a></li>
+									-->
+								</ul>
+								
+							</article>
+
+						<!-- Posts -->
+							<section class="posts">
+								<article>
+									<header>
+										
+										<h2><a href="#">Source Bytes vs Class (Type of Package)<br /></a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="static/images/01. SRC_BYTES-CLASS.jpg"></a>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">Protocol Type vs Count (# of connections to the same<br />destination host in the past 2 seconds)</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="static/images/02. COUNT-PROTOCOL_TYPE.jpg" /></a>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">Protocol Type, Class, Duration<br /></a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="static/images/03. DURATION-CLASS-PROTOCOL_TYPE.jpg" /></a>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">Service, Class, Duration<br /></a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="static/images/04. DURATION-CLASS-PRT_TYPE_Flag.jpg" /></a>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">Dst host count, Dst host srv count, Flag, Protocol Type<br /></a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="static/images/05. DURATION_SRCBYTES_FLAG.jpg" /></a>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">Flag vs Dst Host Same Srv Rate<br /></a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="static/images/06. FLAG_DST_HOST_SAME_SRV.jpg"  /></a>
+								</article>
+							</section>
+					</div>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li> CyberSec Solutions</li><li> 2021 &copy; </li></ul>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/jquery.scrollex.min.js"></script>
+			<script src="static/assets/js/jquery.scrolly.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>

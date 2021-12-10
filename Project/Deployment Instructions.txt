@@ -1,0 +1,29 @@
+
+-- Documents\GitHub\Cyber_Sec_Analysis\Project>
+
+-- Documents\GitHub\Cyber_Sec_Analysis\Project>
+
+1. Start XAMPP Server for Apache and MySQL.
+
+2. Start Laravel app:
+	
+	- Documents\GitHub\Cyber_Sec_Analysis\Project\api\restfulapi
+
+	- php artisan serve
+
+3. Deploy Flask Application:
+
+	- Documents\GitHub\Cyber_Sec_Analysis\Project\flask_app>
+
+	- python server.py
+
+3. Open in tabs the following urls:
+
+	- http://127.0.0.1/phpmyadmin/index.php?route=/sql&server=1&db=restfulapi&table=cyber_records&pos=0
+
+	- http://127.0.0.1:8000/api/cyberrecords
+
+
+
+
+
